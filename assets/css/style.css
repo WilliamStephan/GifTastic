@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.rating {
+    text-transform: case;
+}
+
+.cars {
+    text-transform: capitalize;
+}
