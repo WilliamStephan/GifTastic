@@ -1,11 +1,26 @@
 * {
+    font-size: 16px;
     box-sizing: border-box;
 }
 
-.rating {
-    text-transform: case;
+.rating, .cars {
+    text-transform: uppercase;
 }
 
-.cars {
-    text-transform: capitalize;
+#title {
+    margin: 0.1rem;
+}
+
+#textbox {
+    margin: 0.1rem;
+
+}
+
+#ncar-text, .cars, #clear {
+    margin: 0.1rem;
+}
+
+#ncar {
+    margin: 0.1rem;
+    width: 6rem;
 }

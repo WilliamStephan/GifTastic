@@ -24,24 +24,20 @@ function keyClick(e) { // looking for clicks
             method: "GET"
         })
         .then(function(response) {
-            // console.log(response);
             $("#gifs").empty();
             for (const gif of response.data) {
                 $("#gifs").append('<img src="' + gif.images.original_still.url + '" data-still="' + gif.images.original_still.url + '" data-animate="' + gif.images.original.url + '" data-state="still" class="gif">');
                 $("#gifs").append('<span class="rating">' + gif.rating + '</span>'); 
-                console.log(gif.images.original_still)
             }
         });
     }
-    if (e.classList.contains('newcar') & document.getElementById("ncar-text").value != "" & !buttonData.includes(document.getElementById("ncar-text").value)) { // new car requested - filters and repeats
-      
-        buttonData.push(document.getElementById("ncar-text").value);
+    if (e.classList.contains('newcar')) {
+        if(document.getElementById("ncar-text").value != "" & !buttonData.includes(document.getElementById("ncar-text").value.toLowerCase())) { // new car requested - filters blanks and repeats
+        buttonData.push(document.getElementById("ncar-text").value.toLowerCase());
         $("#buttons").append('<input class="btn btn-primary cars" id="' + (document.getElementById("ncar-text").value) + '" type="button" value="' + document.getElementById("ncar-text").value + '"></input>');
-        
-        console.log(buttonData);
-        console.log("class = newCar: " + e);
+        document.getElementById("ncar-text").value = "";
+        }
     }
-
     
     if (e.classList.contains('gif')) { // gif clicked
         var state = $(e).attr("data-state");
@@ -53,13 +49,17 @@ function keyClick(e) { // looking for clicks
             $(e).attr("data-state", "still");
         }
     }
+
+    if (e.classList.contains('clearall')) { // gif clicked
+        $("#gifs").empty();
+    }
 }
 
 function makeButtons() {
     for (const button of buttonData){
         $("#buttons").append('<input class="btn btn-primary cars" id="' + button + '" type="button" value="' + button + '"></input>');
-        console.log(button);
     }
+    
 }
 
 
