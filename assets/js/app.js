@@ -3,9 +3,6 @@ console.log("app.js is linked - global vars & main app logic"); // global vars &
 var buttonData = ["saab", "volvo", "bmw", "ford", "chevrolet", "hyundai", "fiat", "honda", "ferrari", "mercedes", "nissan", "toyota", "tesla", "volkswagen"];
 var templateURL = "https://api.giphy.com/v1/gifs/search?api_key=AZhHgDRHauOQUs5Ugd5HWbvLX7BuV0UO&limit=10&offset=0&lang=en&q=";
 var queryURL;
-var myButton;
-
-
 
 https://api.giphy.com/v1/gifs/search?api_key=AZhHgDRHauOQUs5Ugd5HWbvLX7BuV0UO&q=Ferarri&limit=10&offset=0&rating=G&lang=en
 
@@ -16,8 +13,8 @@ document.body.onclick = keyClick;
 // launch point for click events 
 function keyClick(e) { // looking for clicks  
     e = window.event ? event.srcElement : e.target;
-    
-    if (e.classList.contains('cars')) { // button clicked
+    i = 0;
+    if (e.classList.contains('cars')) { // car button clicked
         queryURL = templateURL + e.getAttribute('id');
         $.ajax({
             url: queryURL,
@@ -26,12 +23,15 @@ function keyClick(e) { // looking for clicks
         .then(function(response) {
             $("#gifs").empty();
             for (const gif of response.data) {
-                $("#gifs").append('<img src="' + gif.images.original_still.url + '" data-still="' + gif.images.original_still.url + '" data-animate="' + gif.images.original.url + '" data-state="still" class="gif">');
-                $("#gifs").append('<span class="rating">' + gif.rating + '</span>'); 
+                i++
+                str = "#gif-" + i; 
+                $("#gifs").append('<div id="gif-' + i + '" class="clip"></div>');
+                $(str).append('<img src="' + gif.images.original_still.url + '" data-still="' + gif.images.original_still.url + '" data-animate="' + gif.images.original.url + '" data-state="still" class="gif">');
+                $(str).append('<p class="rating">RATED: ' + gif.rating + '</p>'); 
             }
         });
     }
-    if (e.classList.contains('newcar')) {
+    if (e.classList.contains('newcar')) { // add make clicked
         if(document.getElementById("ncar-text").value != "" & !buttonData.includes(document.getElementById("ncar-text").value.toLowerCase())) { // new car requested - filters blanks and repeats
         buttonData.push(document.getElementById("ncar-text").value.toLowerCase());
         $("#buttons").append('<input class="btn btn-primary cars" id="' + (document.getElementById("ncar-text").value) + '" type="button" value="' + document.getElementById("ncar-text").value + '"></input>');
@@ -50,7 +50,7 @@ function keyClick(e) { // looking for clicks
         }
     }
 
-    if (e.classList.contains('clearall')) { // gif clicked
+    if (e.classList.contains('clearall')) { // clear clicked
         $("#gifs").empty();
     }
 }

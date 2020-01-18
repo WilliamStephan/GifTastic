@@ -3,24 +3,47 @@
     box-sizing: border-box;
 }
 
-.rating, .cars {
+body {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cars, .rating{
     text-transform: uppercase;
+    vertical-align: middle;
 }
 
-#title {
-    margin: 0.1rem;
-}
-
-#textbox {
-    margin: 0.1rem;
-
-}
-
-#ncar-text, .cars, #clear {
+#title, #textbox, #ncar-text, .cars, #clear  {
     margin: 0.1rem;
 }
 
 #ncar {
     margin: 0.1rem;
     width: 6rem;
+}
+
+#gifs {   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.clip {
+    background-color: #666666;
+    margin: 0.2rem 0 0.2rem 0;
+}
+
+.car-gifs {
+    margin: 0.5rem;
+}
+
+.rating {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    float: none;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
 }
