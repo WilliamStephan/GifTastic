@@ -32,7 +32,7 @@ function keyClick(e) { // looking for clicks
     if (e.classList.contains('newcar')) { // add make clicked
         if (document.getElementById("ncar-text").value != "" & !buttonData.includes(document.getElementById("ncar-text").value.toLowerCase())) { // new car requested - filters blanks and repeats
             buttonData.push(document.getElementById("ncar-text").value.toLowerCase());
-            $("#buttons").append('<input class="btn btn-primary cars" id="' + (document.getElementById("ncar-text").value) + '" type="button" value="' + document.getElementById("ncar-text").value + '"></input>');
+            $("#buttons").append('<input class="btn btn-primary cars" id="' + (document.getElementById("ncar-text").value) + '" type="button" value="' + document.getElementById("ncar-text").value + '">');
             document.getElementById("ncar-text").value = "";
         }
     }
