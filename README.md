@@ -4,7 +4,7 @@ Homework for full stack development bootcamp UT-Austin (UT-VIRT-FSF-PT-11-2019-U
 
 Limited time so implemented exact requirements defined in assignment video
 
-Application link: [GIFTastic](https://williamstephan.github.io/GifTastic//)
+Application link: [GIFTastic](https://williamstephan.github.io/GifTastic/)
 
 ## Specifications
 
